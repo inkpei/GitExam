@@ -14,15 +14,17 @@ public class Main3 {
         long max = 0;
         int total = scanner.nextInt();
         ArrayList<Long> list = new ArrayList<>();
+        long pmax = 0;
         for (int q = 0; q < total; q++) {
-            list.add(scanner.nextLong());
+            long tmp = scanner.nextLong();
+            pmax = Math.max(pmax, tmp);
+            list.add(tmp);
         }
-        Collections.sort(list);
-        for (int i = 1; i <= list.get(list.size() - 1); i++) {
+        for (long i = 1; i <=pmax; i++) {
             get(i);
         }
         for (Long cur : list) {
-            for (int i = 1; i <= cur; i++) {
+            for (long i = 1; i <= cur; i++) {
                 max = Math.max(max, get(i) + get(cur - i));
             }
             System.out.println(max);
