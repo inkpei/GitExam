@@ -15,8 +15,7 @@ public class Main2 {
         HashSet<String> set = new HashSet<>();
 
         for (int i = 0; i < s.length(); i++) {
-            for (int j = i+1; j <= s.length(); j++) {
-
+            for (int j = i + 1; j <= s.length(); j++) {
                 String sub = s.substring(i, j);
                 if (!set.contains(sub)) {
                     heap.add(sub);
