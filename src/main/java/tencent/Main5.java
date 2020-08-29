@@ -1,3 +1,5 @@
+package tencent;
+
 import java.util.Scanner;
 
 public class Main5 {
