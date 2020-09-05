@@ -1,6 +1,5 @@
-package meituan;
+package 美团;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main3 {
