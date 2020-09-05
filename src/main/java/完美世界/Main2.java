@@ -10,7 +10,7 @@ public class Main2 {
     public static void main(String[] agrs) {
         Scanner in = new Scanner(System.in);
         arr = Arrays.stream(in.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        System.out.println(judge(0, Long.MIN_VALUE, Long.MAX_VALUE));
+        System.out.println(judge(0, Long.MIN_VALUE, Long.MAX_VALUE) ? 1:0);
     }
 
     static boolean judge(int index, long left, long right) {
