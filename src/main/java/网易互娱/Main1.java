@@ -1,4 +1,4 @@
-package 完美世界;
+package 网易互娱;
 
 import java.util.Arrays;
 import java.util.Scanner;
