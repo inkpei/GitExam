@@ -1,7 +1,6 @@
 package 华为;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main2 {
@@ -26,7 +25,7 @@ public class Main2 {
         String[] arr = s.split(" ");
         ArrayList<String> tmp = new ArrayList<>();
         for (String s1 : arr) {
-            if (s1.length() > 1) {
+            if (s1.length() > 0) {
                 tmp.add(s1);
             }
         }
