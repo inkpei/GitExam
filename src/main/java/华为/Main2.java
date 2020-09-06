@@ -10,7 +10,7 @@ public class Main2 {
         String[] arr = scanner.nextLine().split(";");
         String[] from = trans(arr[0]);
         String[] to = trans(arr[1]);
-        int a = minDistance(from, to);
+        int a = longestCommonSubsequence(from, to);
         System.out.printf("(%d,%d)%n", a, to.length);
 
     }
@@ -37,6 +37,27 @@ public class Main2 {
 
     }
 
+    public static int longestCommonSubsequence(String[] text1, String[] text2) {
+        int m = text1.length, n = text2.length;
+        int[][] dp = new int[m + 1][n + 1];
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                // 获取两个串字符
+                String c1 = text1[i], c2 = text2[j];
+                if (c1.equals(c2)) {
+                    // 去找它们前面各退一格的值加1即可
+                    dp[i + 1][j + 1] = dp[i][j] + 1;
+                } else {
+                    //要么是text1往前退一格，要么是text2往前退一格，两个的最大值
+                    dp[i + 1][j + 1] = Math.max(dp[i + 1][j], dp[i][j + 1]);
+                }
+            }
+        }
+        return (text1.length - dp[m][n]) * 2;
+    }
+
+
     static int minDistance(String[] s1, String[] s2) {
         int[][] dp = new int[s1.length + 1][s2.length + 1];
         for (int i = 0; i <= s1.length; i++) {
@@ -44,10 +65,10 @@ public class Main2 {
                 if (i == 0) dp[i][j] = j;
                 else if (j == 0) dp[i][j] = i;
                 else {
-                    if (s1[i - 1].equals(s2[j - 1])){
+                    if (s1[i - 1].equals(s2[j - 1])) {
                         dp[i][j] = dp[i - 1][j - 1];
-                    }else{
-                        dp[i][j] = 2 + Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j]));
+                    } else {
+                        dp[i][j] = 1 + dp[i][j - 1];
                     }
 
                 }
