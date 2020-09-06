@@ -29,7 +29,11 @@ public class Main2 {
                 tmp.add(s1);
             }
         }
-        return tmp.toArray(String[]::new);
+        String[] strings = new String[tmp.size()];
+        for (int i = 0; i < tmp.size(); i++) {
+            strings[i] = tmp.get(i);
+        }
+        return strings;
 
     }
 
