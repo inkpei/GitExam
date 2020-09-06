@@ -47,7 +47,7 @@ public class Main2 {
                     if (s1[i - 1].equals(s2[j - 1])){
                         dp[i][j] = dp[i - 1][j - 1];
                     }else{
-                        dp[i][j] = 1 + Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j]));
+                        dp[i][j] = 2 + Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j]));
                     }
 
                 }
@@ -58,3 +58,12 @@ public class Main2 {
     }
 
 }
+
+/*
+
+i need book.; I need book 2.
+i need book8.; I need book.
+i need     book   .  ;   I need book 2.
+this is a book8. ; this is a book 8.
+this is a book8. ; this is a book.
+ */
