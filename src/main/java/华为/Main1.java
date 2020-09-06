@@ -8,26 +8,12 @@ public class Main1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> list = new ArrayList<>();
-        boolean flag = false;
         while (scanner.hasNext()) {
             String s = scanner.nextLine();
-            if (s.length() > 100) flag = true;
-            if (s.length() < 1) break;
+            if (s.equals(""))break;
             list.add(s);
         }
-        if (list.size() > 20 || list.size() <= 2) flag = true;
-        if (flag) {
-            for (String s : list) {
-                System.out.println(s);
-            }
-        }
         int k = Integer.parseInt(list.get(list.size() - 2));
-        if (k > 9 || k <= 1) flag = true;
-        if (flag) {
-            for (String s : list) {
-                System.out.println(s);
-            }
-        }
         String subString = get(list.get(list.size() - 1), k);
         for (int i = 0; i < list.size() - 2; i++) {
             String tmp = get(list.get(i), k);
