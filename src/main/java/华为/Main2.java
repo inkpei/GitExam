@@ -54,28 +54,7 @@ public class Main2 {
                 }
             }
         }
-        return (text1.length - dp[m][n]) * 2;
-    }
-
-
-    static int minDistance(String[] s1, String[] s2) {
-        int[][] dp = new int[s1.length + 1][s2.length + 1];
-        for (int i = 0; i <= s1.length; i++) {
-            for (int j = 0; j <= s2.length; j++) {
-                if (i == 0) dp[i][j] = j;
-                else if (j == 0) dp[i][j] = i;
-                else {
-                    if (s1[i - 1].equals(s2[j - 1])) {
-                        dp[i][j] = dp[i - 1][j - 1];
-                    } else {
-                        dp[i][j] = 1 + dp[i][j - 1];
-                    }
-
-                }
-            }
-        }
-        // ArrayUtil.print(dp);
-        return dp[s1.length][s2.length];
+        return (text1.length - dp[m][n]) + (text2.length - dp[m][n]);
     }
 
 }
