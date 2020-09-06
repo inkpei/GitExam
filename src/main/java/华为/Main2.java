@@ -1,5 +1,7 @@
 package 华为;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main2 {
@@ -7,33 +9,39 @@ public class Main2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String[] arr = scanner.nextLine().split(";");
-        String from = trans(arr[0]);
-        String to = trans(arr[1]);
-        String[] fromArr = from.split(" ");
-        String[] toArr = to.split(" ");
-        int a = minDistance(fromArr, toArr);
-        System.out.printf("(%d,%d)%n", a, toArr.length);
+        String[] from = trans(arr[0]);
+        String[] to = trans(arr[1]);
+        int a = minDistance(from, to);
+        System.out.printf("(%d,%d)%n", a, to.length);
 
     }
 
-    static String trans(String s) {
+    static String[] trans(String s) {
         s = s.toLowerCase();
         s = s.replace(",", ".");
         s = s.replace("!", ",");
         s = s.replace(".", " . ");
         s = s.replace("?", " ? ");
-        return s.replaceAll(" +", " ").trim();
+        s = s.replaceAll(" +", " ").trim();
+        String[] arr = s.split(" ");
+        ArrayList<String> tmp = new ArrayList<>();
+        for (String s1 : arr) {
+            if (s1.length() > 1) {
+                tmp.add(s1);
+            }
+        }
+        return tmp.toArray(String[]::new);
 
     }
 
-    static int minDistance(String[] word1, String[] word2) {
-        int[][] dp = new int[word1.length + 1][word2.length + 1];
-        for (int i = 0; i <= word1.length; i++) {
-            for (int j = 0; j <= word2.length; j++) {
+    static int minDistance(String[] s1, String[] s2) {
+        int[][] dp = new int[s1.length + 1][s2.length + 1];
+        for (int i = 0; i <= s1.length; i++) {
+            for (int j = 0; j <= s2.length; j++) {
                 if (i == 0) dp[i][j] = j;
                 else if (j == 0) dp[i][j] = i;
                 else {
-                    if (word1[i - 1].equals(word2[j - 1])){
+                    if (s1[i - 1].equals(s2[j - 1])){
                         dp[i][j] = dp[i - 1][j - 1];
                     }else{
                         dp[i][j] = 1 + Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j]));
@@ -43,7 +51,7 @@ public class Main2 {
             }
         }
         // ArrayUtil.print(dp);
-        return dp[word1.length][word2.length];
+        return dp[s1.length][s2.length];
     }
 
 }
